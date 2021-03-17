@@ -3,15 +3,14 @@ pipeline{
     environment{
          PATH = "/opt/maven3/bin:$PATH"
     }
-    
     stages{
         stage("Git Checkout"){
             
         steps{
             git branch: 'main', credentialsId: 'github', url: 'https://github.com/servicecloud009/myweb.git'
+            }
         }
-        }
-        Stage("maven build"){
+        Stage("Maven Build"){
            steps{
               sh "mvn clean package"
            }
